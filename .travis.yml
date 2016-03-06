@@ -1,0 +1,17 @@
+language: node_js
+sudo: required
+dist: trusty
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-lxc/lxd-stable -y
+  - sudo apt-get update
+  - sudo apt-get install lxd -y
+  - openssl req -subj '/CN=domain.com/O=My Company Name LTD./C=US' -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -out server.crt
+  - openssl pkcs12 -export -in server.crt -inkey server.key -out server.pfx -passout pass:''
+  - sudo lxc config trust add server.crt
+  - sudo lxc remote add lxc-org images.linuxcontainers.org
+  - "sudo lxc image copy lxc-org:/ubuntu/trusty/amd64 local: --alias=ubuntu-trusty-amd64"
+node_js:
+ - "v4"
+ - "v5"
+script: "npm run test-travis"
+after_script: "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"

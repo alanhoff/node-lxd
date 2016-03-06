@@ -1,0 +1,56 @@
+{
+  "name": "lxd",
+  "version": "1.0.0",
+  "description": "A client for interacting with LXD daemons",
+  "main": "lib/lxd.js",
+  "scripts": {
+    "test": "standard && mocha --reporter spec ./test/*",
+    "test-travis": "standard && istanbul cover _mocha -- --reporter spec ./test/*",
+    "docs": "jsdoc lib -r -d docs"
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "beforeEach"
+    ]
+  },
+  "keywords": [
+    "container",
+    "lxc",
+    "lxd",
+    "docker",
+    "virtual",
+    "virtualization",
+    "isolate",
+    "linux",
+    "operating",
+    "system",
+    "cgroups"
+  ],
+  "author": "Alan Hoffmeister <alanhoffmeister@gmail.com>",
+  "homepage": "https://github.com/alanhoff/node-lxd#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanhoff/node-lxd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alanhoff/node-lxd/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "request-promise": "^2.0.1"
+  },
+  "devDependencies": {
+    "bluebird": "^3.3.4",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.8",
+    "istanbul": "^0.4.2",
+    "jsdoc": "^3.4.0",
+    "mocha": "^2.4.5",
+    "nock": "^7.2.2",
+    "pem": "^1.8.1",
+    "standard": "^6.0.7"
+  }
+}
